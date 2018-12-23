@@ -1,0 +1,25 @@
+<div layout="row">
+	Do you know {{betDetail.user}} ? If you manage to guess more than 7 correct answers what {{betDetail.user}} might have given, then you win {{betDetail.betAmount}} tokens else you loose.
+</div>
+
+<div layout="column" layout-gt-md="row" ng-repeat="grid in questions">
+	<md-card class="tellQue" flex flex-gt-md="50" ng-repeat="question in grid">
+		<md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">
+				{{question.question}} <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+			</span>
+          </md-card-title-text>
+        </md-card-title>
+		<md-card-content>
+			<md-radio-group ng-model="question.userOption">
+				<md-radio-button value="{{option.optionId}}" ng-repeat="option in question.options">{{option.option}}</md-radio-button>
+			</md-radio-group>
+		</md-card-content>
+	</md-card>
+</div>
+
+<md-button class="md-fab tellSave" aria-label="Save Response" ng-click="saveTellUs()" ng-hide="questions == undefined">
+	<md-icon md-font-icon="fa fa-2x fa-floppy-o" aria-hidden="true"></md-icon>
+	<md-tooltip>Submit</md-tooltip>
+</md-button>

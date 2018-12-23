@@ -1,0 +1,30 @@
+<md-dialog aria-label="OverView">
+	<form ng-cloak ng-submit="addToken()">
+    <md-dialog-content>
+		<div class="md-dialog-content">
+			<p>
+				How much tokens you want to purchase ?
+			</p>
+			<p>
+				*Note: 1 Token = ₹1
+			</p>
+			<p>
+				<label>Amount &nbsp;</label>
+				<md-input-container>
+					<md-select ng-model="tokenAmount" placeholder="Choose Amount">
+						<md-option value=20>20</md-option>
+						<md-option value=50>50</md-option>
+						<md-option value=100>100</md-option>
+					</md-select>
+				</md-input-container>
+			</p>
+		</div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+		<span flex></span>
+		<md-button ng-click="notNow()">Not Now</md-button>
+		<md-button type="submit" ng-disabled="tokenAmount == undefined">Add</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

@@ -1,0 +1,122 @@
+<html lang="en" >
+<head>
+	<title>Know Your Friend</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="description" content="Simple game to know your friend with few sets of questions">
+	<meta name="keywords" content="facebook,friends,challenge,bet,know,friend,know your friend,know friend,quiz,friend quiz">
+	
+	<!--og tags-->
+	<meta property="fb:app_id" content="1965285233740290" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Know Your Friend" />
+	<meta property="og:description" content="Do your friends really know about you... Then simply click this link & challenge them" />
+	<meta property="og:url" content="https://knowyourfriend.online" />
+	<meta property="og:image" content="https://knowyourfriend.online/images/og.jpg" />
+  
+	<!--Icon-->
+	<link rel="apple-touch-icon" sizes="57x57" href="icons/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="icons/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="icons/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="icons/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="icons/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="icons/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="icons/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="icons/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="icons/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+	<link rel="manifest" href="icons/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="icons/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+  
+	<!-- Angular Material style sheet -->
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+	<link rel="stylesheet" href="css/font-awesome.css">
+	<!-- Angular Material requires Angular.js Libraries -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+	
+	<!-- Angular Material Library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+	
+	<!--Our JS-->
+	<script src="js/app.js"></script>
+	<script src="js/loginController.js"></script>
+	<script src="js/profileController.js"></script>
+	<script src="js/challengeController.js"></script>
+	<script src="js/previousController.js"></script>
+	<script src="js/tellUsAboutController.js"></script>
+	<script src="js/betController.js"></script>
+	<script src="js/aboutController.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-app="KnowYourFriend" layout="row" ng-cloak ng-controller="mainControler">
+	<!--Loading-->
+	<md-backdrop class="md-dialog-backdrop md-opaque" style="position: fixed;" aria-hidden="true" ng-if="loading"></md-backdrop>
+	<div class="md-dialog-container" tabindex="-1" ng-if="loading">
+		<md-progress-circular md-mode="indeterminate" class="loader"></md-progress-circular>
+	</div>
+
+
+	<!--Sidenav-->
+	<md-sidenav class="md-whiteframe-z2 site-sidenav" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" tabindex="-1" ng-if="userId != undefined">
+		<header class="nav-header">
+			<a ng-href="/" class="docs-logo" href="/">
+				<img src="images/logo.png" alt="">
+				<h1 class="docs-logotype md-heading ng-isolate-scope">Know Your Friend</h1>
+			</a>
+		</header>
+		<md-content flex="">
+			<ul class="docs-menu">
+				<li class="parent-list-item">
+					<md-button ng-href="#/profile" ng-click="closeMenu()"><i class="fa fa-address-book" aria-hidden="true"></i> Profile</md-button>
+				</li>
+				<li class="parent-list-item">
+					<md-button ng-href="#/challenge" ng-click="closeMenu()"><i class="fa fa-trophy" aria-hidden="true"></i> Challenge</md-button>
+				</li>
+				<li class="parent-list-item">
+					<md-button ng-href="#/previous" ng-click="closeMenu()"><i class="fa fa-trophy" aria-hidden="true"></i> Previous Challenges</md-button>
+				</li>
+				<li class="parent-list-item">
+					<md-button ng-href="#/tellUsAbout" ng-click="closeMenu()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Tell Us About</md-button>
+				</li>
+				<li class="parent-list-item">
+					<md-button href="mailto:feedback@knowyourfriend.online" ng-click="closeMenu()"><i class="fa fa-envelope-o" aria-hidden="true"></i> Feedback</md-button>
+				</li>
+			</ul>
+		
+		</md-content>
+		
+	</md-sidenav>
+	
+	<!--Body-->
+	<div layout="column" tabindex="-1" role="main" flex="">
+		<!--Top Toolbar-->
+		<md-toolbar class="md-whiteframe-glow-z1 site-content-toolbar" ng-if="userId != undefined">
+			<div class="md-toolbar-tools docs-toolbar-tools" tabindex="-1">
+				<md-button class="md-icon-button md-primary" aria-label="Toggle Menu" ng-click="openMenu()">
+					<md-icon md-font-icon="fa fa-bars" aria-hidden="true" hide-gt-sm=""></md-icon>
+				</md-button>
+				<div layout="row" flex="" class="fill-height">
+					<h2 class="md-toolbar-item md-breadcrumb md-headline">
+						<span class="md-breadcrumb-page ng-binding">{{routeName}}</span>
+					</h2>
+					<span flex="" class="flex"></span>
+				</div>
+			</div>
+		</md-toolbar>
+		
+		<!--Body-->
+		<md-content md-scroll-y="" layout="column" flex="">
+			<div ng-view="" layout-padding="" flex="noshrink" class="docs-ng-view">
+			</div>
+		</md-content>
+	</div>
+</body>
+</html>

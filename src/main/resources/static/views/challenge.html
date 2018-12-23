@@ -1,0 +1,44 @@
+<div layout="row" flex>
+	<form ng-submit="searchList()" flex style="margin:0">
+		<div layout="column" layout-gt-md="row" flex>
+			<div layout="row" layout-align="center center">
+				<md-button class="md-primary md-raised fb-btn" ng-click="share()">
+					<md-icon md-font-icon="fa fa-2x fa-facebook-official" aria-hidden="true"></md-icon>
+					Lonely,Invite Friends
+				</md-button>
+			</div>
+			<div layout="row">
+				<md-input-container class="challengeText" flex>
+					<label>Search Friend</label>
+					<input ng-model="search" type="text">
+				</md-input-container>
+				<md-icon md-font-icon="fa fa-times" aria-hidden="true"  ng-click="reset()" ng-disabled="search == undefined || search == ''"></md-icon>
+				<md-button class="md-primary md-raised" type="submit" ng-disabled="search == undefined || search == ''">Search</md-button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div layout="column" layout-gt-md="row" ng-repeat="grid in friends" flex>
+		<md-card class="challengeCard" ng-repeat="friend in grid" flex-gt-md="25" flex>
+			<md-card-content>
+				<div layout="row" flex>
+					<div layout="row" layout-align="start center" flex="30">
+						<img ng-src="{{fbBaseURL}}{{fbAPIVersion}}{{friend.id}}/picture?height=50&width=50&access_token={{fbToken}}" style="background: white;padding: 4px;border-radius: 10px;"/>
+					</div>
+					<div layout="column">
+						<div>
+							<span>{{friend.name}}</span>
+						</div>
+						<div>
+							<md-button class="md-primary" ng-click="challengeConfirm(friend.id)">Challenge</md-button>
+						</div>
+					</div>
+				</div>
+			</md-card-content>
+		</md-card>
+</div>
+<md-button class="md-fab md-primary tellSave" aria-label="Open Challenge" ng-click="openChallenge()">
+	<md-icon md-font-icon="fa fa-2x fa-superpowers" aria-hidden="true"></md-icon>
+	<md-tooltip>Open Challenge</md-tooltip>
+</md-button>

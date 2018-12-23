@@ -1,0 +1,25 @@
+<md-dialog aria-label="OverView">
+<form ng-cloak>
+	<md-dialog-content>
+	<div class="md-dialog-content">
+		<p>
+			Challenge Result, <i class="fa fa-share-alt" aria-hidden="true"></i>
+			share now
+		</p>
+		<p>
+			{{resultMsg}}
+		</p>
+		<div layout="row" layout-align="space-around center">
+			<div>
+				<a href="" ng-click="shareResult()" style="color:#3b5998">
+					<i class="fa fa-2x fa-facebook-official" aria-hidden="true"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+	</md-dialog-content>
+
+	<md-dialog-actions layout="row"> <span flex></span>
+	<md-button ng-click="notNow()">Close</md-button> </md-dialog-actions>
+</form>
+</md-dialog>

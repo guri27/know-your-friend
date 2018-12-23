@@ -1,0 +1,32 @@
+<md-dialog aria-label="OverView">
+	<form ng-cloak>
+    <md-dialog-content>
+		<div class="md-dialog-content">
+			<p ng-if="challengedUser != undefined">
+				Would you like to challenge user ?
+			</p>
+			<p ng-if="challengedUser == undefined">
+				Create open challenge,whoever accept it first gets to play !
+			</p>
+			<p>
+				<label>Amount &nbsp;</label>
+				<md-input-container>
+					<md-select ng-model="bettingAmount" placeholder="Choose Amount">
+						<md-option value=0 ng-show="trial">Trial</md-option>
+						<md-option ng-hide="trial" value=5>5</md-option>
+						<md-option ng-hide="trial" value=10>10</md-option>
+						<md-option ng-hide="trial" value=20>20</md-option>
+						<md-option ng-hide="trial" value=50>50</md-option>
+					</md-select>
+				</md-input-container>
+			</p>
+		</div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+		<span flex></span>
+		<md-button ng-click="notNow()">Not Now</md-button>
+		<md-button ng-click="challenge()" ng-disabled="bettingAmount == undefined">Challenge</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

@@ -1,0 +1,91 @@
+<md-card>
+	<md-card-content>
+		<!--Picture & Name-->
+		<div layout="row" layout-align="center center">
+			<div class="profilePic">
+				<img id="profileImage" ng-src="{{fbBaseURL}}{{fbAPIVersion}}{{userId}}/picture?height=200&width=200&access_token={{fbToken}}">
+				<!--<i class="fa fa-user-circle" aria-hidden="true"></i>-->
+			</div>
+		</div>
+		<div layout="row" layout-align="center center">
+			<div>{{profile.username}}</div>
+		</div>
+		<br />
+		
+		<!--Challenge Stats-->
+		<span>Statistics</span>
+		<hr />
+		<div layout="row" layout-align="space-around center">
+			<md-card class="factCard">
+				<md-card-content>
+					{{profile.awaitingChl}}
+				</md-card-content>
+				<md-card-footer layout="column">
+					<div><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+					<div>Awaiting</div>
+				</md-card-footer>
+			</md-card>
+			<md-card class="factCard">
+				<md-card-content>
+					{{profile.winChl}}
+				</md-card-content>
+				<md-card-footer layout="column">
+					<div><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
+					<div>Win</div>
+				</md-card-footer>
+			</md-card>
+			<md-card class="factCard">
+				<md-card-content>
+					{{profile.lossChl}}
+				</md-card-content>
+				<md-card-footer layout="column">
+					<div><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+					<div>Loss</div>
+				</md-card-footer>
+			</md-card>
+		</div>
+		<br />
+		
+		<!--Tokens-->
+		<span>Tokens</span>
+		<hr />
+		<div layout="row" layout-align="space-around center">
+			<md-card class="factCard">
+				<md-card-content>
+					<span ng-show="profile.trial && profile.available == 0">TRIAL</span>
+					<span ng-show="profile.trial && profile.available > 0">TRIAL + {{profile.available}}</span>
+					<span ng-hide="profile.trial">{{profile.available}}</span>
+				</md-card-content>
+				<md-card-footer layout="column">
+					<div><i class="fa fa-trophy" aria-hidden="true"></i></div>
+					<div>Remaining</div>
+				</md-card-footer>
+			</md-card>
+			<md-card class="factCard">
+				<md-card-content>
+					{{profile.win}}
+				</md-card-content>
+				<md-card-footer layout="column">
+					<div><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
+					<div>Win</div>
+				</md-card-footer>
+			</md-card>
+			<md-card class="factCard">
+				<md-card-content>
+					{{profile.loss}}
+				</md-card-content>
+				<md-card-footer layout="column">
+					<div><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+					<div>Loss</div>
+				</md-card-footer>
+			</md-card>
+		</div>
+		
+		<!--Add Tokens-->
+		<div layout="column" layout-align="space-around center" layout-gt-sm="row">
+			<md-button class="md-primary md-raised" ng-click="tokenDialog()"><md-icon md-font-icon="fa fa-credit-card" aria-hidden="true"></md-icon>Purchase Tokens</md-button>
+			<md-button class="md-primary md-raised" ng-click="redeemDialog()"><md-icon md-font-icon="fa fa-paper-plane" aria-hidden="true"></md-icon>Redeem Tokens</md-button>
+		</div>
+		
+	</md-card-content>
+</md-card>

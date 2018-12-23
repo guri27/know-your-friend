@@ -1,0 +1,27 @@
+<md-dialog aria-label="OverView">
+	<form ng-cloak ng-submit="redeemToken()">
+    <md-dialog-content>
+		<div class="md-dialog-content">
+			<p>
+				Redeem Tokens
+			</p>
+			<p>
+				*Note: Minimum 200 tokens required for redemption.</br>
+				As of now we give amazon pay balance gift card
+			</p>
+			<p>
+				<md-input-container style="width:100%">
+					<label>EmaiId</label>
+					<input type="email" ng-model="email" required />
+				</md-input-container>
+			</p>
+		</div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+		<span flex></span>
+		<md-button ng-click="notNow()">Not Now</md-button>
+		<md-button type="submit" ng-disabled="email == undefined">Redeem</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
